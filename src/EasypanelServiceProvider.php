@@ -2,9 +2,9 @@
 
 namespace Mrfansi\Easypanel;
 
+use Mrfansi\Easypanel\Commands\EasypanelCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mrfansi\Easypanel\Commands\EasypanelCommand;
 
 class EasypanelServiceProvider extends PackageServiceProvider
 {
