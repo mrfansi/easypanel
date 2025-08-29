@@ -7,11 +7,11 @@ namespace Mrfansi\Easypanel\Data;
 final readonly class ProjectData
 {
     public function __construct(
-        public string  $name,
+        public string $name,
         public ?string $description = null,
-        public ?array  $environment = null,
-        public ?array  $domains = null,
-        public ?array  $services = null,
+        public ?array $environment = null,
+        public ?array $domains = null,
+        public ?array $services = null,
     ) {}
 
     public static function fromArray(array $data): self
