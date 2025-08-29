@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Mrfansi\Easypanel\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class EasypanelCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'easypanel';
 
     public $description = 'My command';
 
