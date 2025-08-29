@@ -6,6 +6,7 @@ namespace Mrfansi\Easypanel\Http;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Factory as HttpFactory;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
 use Mrfansi\Easypanel\Contracts\HttpClientInterface;
 use Mrfansi\Easypanel\Exceptions\EasypanelApiException;
@@ -140,7 +141,7 @@ final class HttpClient implements HttpClientInterface
         return $this->handleResponse($response);
     }
 
-    private function buildClient(): HttpFactory
+    private function buildClient(): PendingRequest
     {
         $client = $this->httpFactory
             ->baseUrl($this->baseUrl)
