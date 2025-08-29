@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Mrfansi\Easypanel\Http;
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Factory as HttpFactory;
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
 use Mrfansi\Easypanel\Contracts\HttpClientInterface;
 use Mrfansi\Easypanel\Exceptions\EasypanelApiException;
@@ -27,6 +27,12 @@ final class HttpClient implements HttpClientInterface
         $this->httpFactory = $httpFactory;
     }
 
+    /**
+     * @throws EasypanelAuthenticationException
+     * @throws EasypanelApiException
+     * @throws ConnectionException
+     * @throws EasypanelValidationException
+     */
     public function get(string $endpoint, array $parameters = []): array
     {
         $query = $this->buildTrpcQuery($parameters);
@@ -34,21 +40,45 @@ final class HttpClient implements HttpClientInterface
         return $this->makeRequest('GET', $endpoint.($query ? '?'.$query : ''));
     }
 
+    /**
+     * @throws EasypanelApiException
+     * @throws EasypanelAuthenticationException
+     * @throws ConnectionException
+     * @throws EasypanelValidationException
+     */
     public function post(string $endpoint, array $data = []): array
     {
         return $this->makeRequest('POST', $endpoint, $data);
     }
 
+    /**
+     * @throws EasypanelApiException
+     * @throws EasypanelAuthenticationException
+     * @throws ConnectionException
+     * @throws EasypanelValidationException
+     */
     public function put(string $endpoint, array $data = []): array
     {
         return $this->makeRequest('PUT', $endpoint, $data);
     }
 
+    /**
+     * @throws EasypanelAuthenticationException
+     * @throws EasypanelApiException
+     * @throws ConnectionException
+     * @throws EasypanelValidationException
+     */
     public function patch(string $endpoint, array $data = []): array
     {
         return $this->makeRequest('PATCH', $endpoint, $data);
     }
 
+    /**
+     * @throws EasypanelAuthenticationException
+     * @throws EasypanelApiException
+     * @throws ConnectionException
+     * @throws EasypanelValidationException
+     */
     public function delete(string $endpoint): array
     {
         return $this->makeRequest('DELETE', $endpoint);
@@ -88,6 +118,12 @@ final class HttpClient implements HttpClientInterface
         ]);
     }
 
+    /**
+     * @throws EasypanelAuthenticationException
+     * @throws EasypanelApiException
+     * @throws ConnectionException
+     * @throws EasypanelValidationException
+     */
     private function makeRequest(string $method, string $endpoint, array $data = []): array
     {
         $client = $this->buildClient();
@@ -98,13 +134,13 @@ final class HttpClient implements HttpClientInterface
             'PUT' => $client->put($endpoint, $data),
             'PATCH' => $client->patch($endpoint, $data),
             'DELETE' => $client->delete($endpoint),
-            default => throw new EasypanelApiException("Unsupported HTTP method: {$method}")
+            default => throw new EasypanelApiException("Unsupported HTTP method: $method")
         };
 
         return $this->handleResponse($response);
     }
 
-    private function buildClient(): PendingRequest
+    private function buildClient(): HttpFactory
     {
         $client = $this->httpFactory
             ->baseUrl($this->baseUrl)
@@ -118,6 +154,11 @@ final class HttpClient implements HttpClientInterface
         return $client;
     }
 
+    /**
+     * @throws EasypanelAuthenticationException
+     * @throws EasypanelApiException
+     * @throws EasypanelValidationException
+     */
     private function handleResponse(Response $response): array
     {
         $statusCode = $response->status();
@@ -130,6 +171,11 @@ final class HttpClient implements HttpClientInterface
         $this->throwAppropriateException($statusCode, $data);
     }
 
+    /**
+     * @throws EasypanelAuthenticationException
+     * @throws EasypanelValidationException
+     * @throws EasypanelApiException
+     */
     private function throwAppropriateException(int $statusCode, ?array $data): never
     {
         $message = $data['message'] ?? $data['error'] ?? 'Unknown error occurred';

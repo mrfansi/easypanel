@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mrfansi\Easypanel\Services;
 
+use Mrfansi\Easypanel\Exceptions\EasypanelValidationException;
 use Mrfansi\Easypanel\Validation\RequestValidator;
 
 final class ProjectService extends AbstractService
@@ -18,6 +19,9 @@ final class ProjectService extends AbstractService
         return $this->makeRequest('projects.listProjectsAndServices');
     }
 
+    /**
+     * @throws EasypanelValidationException
+     */
     public function inspectProject(string $projectName): array
     {
         RequestValidator::validateProjectName($projectName);
