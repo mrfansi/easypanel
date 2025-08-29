@@ -7,12 +7,12 @@ use Mrfansi\Easypanel\Easypanel;
 use Mrfansi\Easypanel\Http\HttpClient;
 
 it('real: can fetch current user from live Easypanel', function () {
-    if (!(bool)env('EASYPANEL_REAL_TEST', false)) {
+    if (! (bool) env('EASYPANEL_REAL_TEST', false)) {
         $this->markTestSkipped('EASYPANEL_REAL_TEST not enabled.');
     }
 
-    $baseUrl = (string)env('EASYPANEL_BASE_URL', 'https://umwtg0.easypanel.host');
-    $token = (string)env('EASYPANEL_AUTH_TOKEN');
+    $baseUrl = (string) env('EASYPANEL_BASE_URL', 'https://umwtg0.easypanel.host');
+    $token = (string) env('EASYPANEL_AUTH_TOKEN');
 
     if ($baseUrl === '' || $token === '') {
         $this->markTestSkipped('EASYPANEL_BASE_URL or EASYPANEL_AUTH_TOKEN not set.');
@@ -22,7 +22,7 @@ it('real: can fetch current user from live Easypanel', function () {
     $client = (new HttpClient($httpFactory))
         ->setBaseUrl($baseUrl)
         ->setAuthToken($token)
-        ->setTimeout((int)env('EASYPANEL_TIMEOUT', 60));
+        ->setTimeout((int) env('EASYPANEL_TIMEOUT', 60));
 
     $easypanel = new Easypanel($client);
 
@@ -33,12 +33,12 @@ it('real: can fetch current user from live Easypanel', function () {
 })->group('real:easypanel');
 
 it('real: can list projects from live Easypanel', function () {
-    if (!(bool)env('EASYPANEL_REAL_TEST', false)) {
+    if (! (bool) env('EASYPANEL_REAL_TEST', false)) {
         $this->markTestSkipped('EASYPANEL_REAL_TEST not enabled.');
     }
 
-    $baseUrl = (string)env('EASYPANEL_BASE_URL', 'https://umwtg0.easypanel.host');
-    $token = (string)env('EASYPANEL_AUTH_TOKEN');
+    $baseUrl = (string) env('EASYPANEL_BASE_URL', 'https://umwtg0.easypanel.host');
+    $token = (string) env('EASYPANEL_AUTH_TOKEN');
 
     if ($baseUrl === '' || $token === '') {
         $this->markTestSkipped('EASYPANEL_BASE_URL or EASYPANEL_AUTH_TOKEN not set.');
@@ -48,7 +48,7 @@ it('real: can list projects from live Easypanel', function () {
     $client = (new HttpClient($httpFactory))
         ->setBaseUrl($baseUrl)
         ->setAuthToken($token)
-        ->setTimeout((int)env('EASYPANEL_TIMEOUT', 60));
+        ->setTimeout((int) env('EASYPANEL_TIMEOUT', 60));
 
     $easypanel = new Easypanel($client);
 
@@ -58,12 +58,12 @@ it('real: can list projects from live Easypanel', function () {
 })->group('real:easypanel');
 
 it('real: can fetch system stats from live Easypanel', function () {
-    if (!(bool)env('EASYPANEL_REAL_TEST', false)) {
+    if (! (bool) env('EASYPANEL_REAL_TEST', false)) {
         $this->markTestSkipped('EASYPANEL_REAL_TEST not enabled.');
     }
 
-    $baseUrl = (string)env('EASYPANEL_BASE_URL', 'https://umwtg0.easypanel.host');
-    $token = (string)env('EASYPANEL_AUTH_TOKEN');
+    $baseUrl = (string) env('EASYPANEL_BASE_URL', 'https://umwtg0.easypanel.host');
+    $token = (string) env('EASYPANEL_AUTH_TOKEN');
 
     if ($baseUrl === '' || $token === '') {
         $this->markTestSkipped('EASYPANEL_BASE_URL or EASYPANEL_AUTH_TOKEN not set.');
@@ -73,7 +73,7 @@ it('real: can fetch system stats from live Easypanel', function () {
     $client = (new HttpClient($httpFactory))
         ->setBaseUrl($baseUrl)
         ->setAuthToken($token)
-        ->setTimeout((int)env('EASYPANEL_TIMEOUT', 60));
+        ->setTimeout((int) env('EASYPANEL_TIMEOUT', 60));
 
     $easypanel = new Easypanel($client);
 

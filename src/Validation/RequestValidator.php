@@ -77,7 +77,7 @@ final class RequestValidator
 
     public static function validateDomainName(string $domain): void
     {
-        if (!preg_match('/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $domain)) {
+        if (! preg_match('/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $domain)) {
             throw new EasypanelValidationException('Invalid domain name format');
         }
     }
@@ -91,14 +91,14 @@ final class RequestValidator
 
     public static function validateMemoryLimit(string $memory): void
     {
-        if (!preg_match('/^\d+(M|G|K)?$/', $memory)) {
+        if (! preg_match('/^\d+(M|G|K)?$/', $memory)) {
             throw new EasypanelValidationException('Memory limit must be in format like 512M, 1G, etc.');
         }
     }
 
     public static function validateCpuLimit(string $cpu): void
     {
-        if (!preg_match('/^\d*\.?\d+$/', $cpu)) {
+        if (! preg_match('/^\d*\.?\d+$/', $cpu)) {
             throw new EasypanelValidationException('CPU limit must be a valid decimal number');
         }
     }
