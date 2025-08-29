@@ -1,0 +1,292 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Domains",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Domains",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/domains.getPrimaryDomain": {
+            "get": {
+                "operationId": "domains.getPrimaryDomain",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "projectName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                },
+                                                "serviceName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "serviceName"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/domains.listDomains": {
+            "get": {
+                "operationId": "domains.listDomains",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "projectName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                },
+                                                "serviceName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/domains.createDomain": {
+            "post": {
+                "operationId": "domains.createDomain",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": false,
+                                        "description": "Unknown object properties"
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/domains.updateDomain": {
+            "post": {
+                "operationId": "domains.updateDomain",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": false,
+                                        "description": "Unknown object properties"
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/domains.deleteDomain": {
+            "post": {
+                "operationId": "domains.deleteDomain",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/domains.setPrimaryDomain": {
+            "post": {
+                "operationId": "domains.setPrimaryDomain",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

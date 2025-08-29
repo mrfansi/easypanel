@@ -6,10 +6,16 @@ namespace Mrfansi\Easypanel;
 
 use Mrfansi\Easypanel\Contracts\HttpClientInterface;
 use Mrfansi\Easypanel\Services\AuthService;
+use Mrfansi\Easypanel\Services\CertificatesService;
+use Mrfansi\Easypanel\Services\DomainsService;
 use Mrfansi\Easypanel\Services\MonitorService;
 use Mrfansi\Easypanel\Services\ProjectService;
+use Mrfansi\Easypanel\Services\ServicesAppService;
 use Mrfansi\Easypanel\Services\ServiceService;
+use Mrfansi\Easypanel\Services\ServicesMySqlService;
 use Mrfansi\Easypanel\Services\SettingsService;
+use Mrfansi\Easypanel\Services\TemplatesService;
+use Mrfansi\Easypanel\Services\UsersService;
 
 final class Easypanel
 {
@@ -43,6 +49,36 @@ final class Easypanel
     public function settings(): SettingsService
     {
         return new SettingsService($this->httpClient);
+    }
+
+    public function users(): UsersService
+    {
+        return new UsersService($this->httpClient);
+    }
+
+    public function certificates(): CertificatesService
+    {
+        return new CertificatesService($this->httpClient);
+    }
+
+    public function domains(): DomainsService
+    {
+        return new DomainsService($this->httpClient);
+    }
+
+    public function servicesApp(): ServicesAppService
+    {
+        return new ServicesAppService($this->httpClient);
+    }
+
+    public function servicesMySql(): ServicesMySqlService
+    {
+        return new ServicesMySqlService($this->httpClient);
+    }
+
+    public function templates(): TemplatesService
+    {
+        return new TemplatesService($this->httpClient);
     }
 
     public function setBaseUrl(string $baseUrl): self

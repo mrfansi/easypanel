@@ -1,0 +1,407 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Branding",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Branding",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/branding.getErrorPageSettings": {
+            "get": {
+                "operationId": "branding.getErrorPageSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.getBasicSettings": {
+            "get": {
+                "operationId": "branding.getBasicSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.getLogoSettings": {
+            "get": {
+                "operationId": "branding.getLogoSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.getCustomCodeSettings": {
+            "get": {
+                "operationId": "branding.getCustomCodeSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.getLinksSettings": {
+            "get": {
+                "operationId": "branding.getLinksSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.getOtherLinksSettings": {
+            "get": {
+                "operationId": "branding.getOtherLinksSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.getInterfaceSettingsPublic": {
+            "get": {
+                "operationId": "branding.getInterfaceSettingsPublic",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.setErrorPageSettings": {
+            "post": {
+                "operationId": "branding.setErrorPageSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "customCss": {
+                                                "type": "string"
+                                            },
+                                            "hideLogo": {
+                                                "type": "boolean"
+                                            },
+                                            "hideLinks": {
+                                                "type": "boolean"
+                                            }
+                                        },
+                                        "required": [
+                                            "hideLogo",
+                                            "hideLinks"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.setBasicSettings": {
+            "post": {
+                "operationId": "branding.setBasicSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "hideIp": {
+                                                "type": "boolean"
+                                            },
+                                            "hideNotes": {
+                                                "type": "boolean"
+                                            },
+                                            "serverName": {
+                                                "type": "string"
+                                            },
+                                            "serverColor": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "hideIp",
+                                            "hideNotes",
+                                            "serverName",
+                                            "serverColor"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.setLogoSettings": {
+            "post": {
+                "operationId": "branding.setLogoSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "lightLogoMark": {
+                                                "type": "string"
+                                            },
+                                            "darkLogoMark": {
+                                                "type": "string"
+                                            },
+                                            "lightLogo": {
+                                                "type": "string"
+                                            },
+                                            "darkLogo": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.setCustomCodeSettings": {
+            "post": {
+                "operationId": "branding.setCustomCodeSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "customCode": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/branding.setLinksSettings": {
+            "post": {
+                "operationId": "branding.setLinksSettings",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Branding"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "hideDocumentationLink": {
+                                                "type": "boolean"
+                                            },
+                                            "hideDiscordLink": {
+                                                "type": "boolean"
+                                            },
+                                            "hideFeedbackLink": {
+                                                "type": "boolean"
+                                            },
+                                            "hideChangelogLink": {
+                                                "type": "boolean"
+                                            },
+                                            "hideOtherLinks": {
+                                                "type": "boolean"
+                                            }
+                                        },
+                                        "required": [
+                                            "hideDocumentationLink",
+                                            "hideDiscordLink",
+                                            "hideFeedbackLink",
+                                            "hideChangelogLink",
+                                            "hideOtherLinks"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

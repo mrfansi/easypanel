@@ -1,0 +1,850 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Services / Mysql",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Services / Mysql",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/services.mysql.inspectService": {
+            "get": {
+                "operationId": "services.mysql.inspectService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "projectName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                },
+                                                "serviceName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "serviceName"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/services.mysql.createService": {
+            "post": {
+                "operationId": "services.mysql.createService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "databaseName": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,62}$"
+                                            },
+                                            "user": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,62}$"
+                                            },
+                                            "image": {
+                                                "type": "string",
+                                                "default": "mysql:9"
+                                            },
+                                            "exposedPort": {
+                                                "type": "number"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "default": "b99a33993946a5ac0065"
+                                            },
+                                            "rootPassword": {
+                                                "$ref": "#/properties/json/properties/password"
+                                            },
+                                            "resources": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "memoryReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "memoryLimit": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuLimit": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "memoryReservation",
+                                                    "memoryLimit",
+                                                    "cpuReservation",
+                                                    "cpuLimit"
+                                                ],
+                                                "additionalProperties": false
+                                            },
+                                            "backup": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "schedule": {
+                                                        "type": "string",
+                                                        "minLength": 1
+                                                    },
+                                                    "destinationId": {
+                                                        "type": "string",
+                                                        "minLength": 1
+                                                    },
+                                                    "prefix": {
+                                                        "type": "string",
+                                                        "pattern": "^[\\w-/.]+$"
+                                                    },
+                                                    "databaseName": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "enabled",
+                                                    "schedule",
+                                                    "destinationId",
+                                                    "prefix"
+                                                ],
+                                                "additionalProperties": false
+                                            },
+                                            "env": {
+                                                "type": "string"
+                                            },
+                                            "configFile": {
+                                                "type": "string"
+                                            },
+                                            "command": {
+                                                "type": "string"
+                                            },
+                                            "phpMyAdmin": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "default": "896b13b93b0681232f51"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "dbGate": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "default": "7c5edd935d2b07bb8efd"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.exposeService": {
+            "post": {
+                "operationId": "services.mysql.exposeService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "exposedPort": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 65535
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "exposedPort"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.updateResources": {
+            "post": {
+                "operationId": "services.mysql.updateResources",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "resources": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "memoryReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "memoryLimit": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuLimit": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "memoryReservation",
+                                                    "memoryLimit",
+                                                    "cpuReservation",
+                                                    "cpuLimit"
+                                                ],
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.enableService": {
+            "post": {
+                "operationId": "services.mysql.enableService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.disableService": {
+            "post": {
+                "operationId": "services.mysql.disableService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.destroyService": {
+            "post": {
+                "operationId": "services.mysql.destroyService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.enablePhpMyAdmin": {
+            "post": {
+                "operationId": "services.mysql.enablePhpMyAdmin",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.disablePhpMyAdmin": {
+            "post": {
+                "operationId": "services.mysql.disablePhpMyAdmin",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.enableDbGate": {
+            "post": {
+                "operationId": "services.mysql.enableDbGate",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.disableDbGate": {
+            "post": {
+                "operationId": "services.mysql.disableDbGate",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.updateAdvanced": {
+            "post": {
+                "operationId": "services.mysql.updateAdvanced",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "command": {
+                                                "type": "string"
+                                            },
+                                            "env": {
+                                                "type": "string"
+                                            },
+                                            "configFile": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "image",
+                                            "command"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mysql.updateCredentials": {
+            "post": {
+                "operationId": "services.mysql.updateCredentials",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mysql"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            },
+                                            "rootPassword": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "password",
+                                            "rootPassword"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

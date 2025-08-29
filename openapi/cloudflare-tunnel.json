@@ -1,0 +1,516 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Cloudflare Tunnel",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Cloudflare Tunnel",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/cloudflareTunnel.getConfig": {
+            "get": {
+                "operationId": "cloudflareTunnel.getConfig",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/cloudflareTunnel.listAccounts": {
+            "get": {
+                "operationId": "cloudflareTunnel.listAccounts",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "apiToken": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "apiToken"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/cloudflareTunnel.listTunnels": {
+            "get": {
+                "operationId": "cloudflareTunnel.listTunnels",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "apiToken": {
+                                                    "type": "string"
+                                                },
+                                                "accountId": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "apiToken",
+                                                "accountId"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/cloudflareTunnel.listZones": {
+            "get": {
+                "operationId": "cloudflareTunnel.listZones",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/cloudflareTunnel.getTunnelRules": {
+            "get": {
+                "operationId": "cloudflareTunnel.getTunnelRules",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "projectName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                },
+                                                "serviceName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "serviceName"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/cloudflareTunnel.setConfig": {
+            "post": {
+                "operationId": "cloudflareTunnel.setConfig",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "apiToken": {
+                                                "type": "string"
+                                            },
+                                            "accountId": {
+                                                "type": "string"
+                                            },
+                                            "tunnelId": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/cloudflareTunnel.createTunnelRule": {
+            "post": {
+                "operationId": "cloudflareTunnel.createTunnelRule",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "subdomain": {
+                                                "type": "string"
+                                            },
+                                            "domain": {
+                                                "type": "string"
+                                            },
+                                            "path": {
+                                                "type": "string"
+                                            },
+                                            "internalProtocol": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "http",
+                                                    "https"
+                                                ]
+                                            },
+                                            "internalPort": {
+                                                "type": "number"
+                                            },
+                                            "zoneId": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "subdomain",
+                                            "domain",
+                                            "path",
+                                            "internalProtocol",
+                                            "internalPort",
+                                            "zoneId"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/cloudflareTunnel.updateTunnelRule": {
+            "post": {
+                "operationId": "cloudflareTunnel.updateTunnelRule",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "subdomain": {
+                                                "type": "string"
+                                            },
+                                            "domain": {
+                                                "type": "string"
+                                            },
+                                            "path": {
+                                                "type": "string"
+                                            },
+                                            "internalProtocol": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "http",
+                                                    "https"
+                                                ]
+                                            },
+                                            "internalPort": {
+                                                "type": "number"
+                                            },
+                                            "zoneId": {
+                                                "type": "string"
+                                            },
+                                            "dnsRecordId": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "id",
+                                            "projectName",
+                                            "serviceName",
+                                            "subdomain",
+                                            "domain",
+                                            "path",
+                                            "internalProtocol",
+                                            "internalPort",
+                                            "zoneId",
+                                            "dnsRecordId"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/cloudflareTunnel.deleteTunnelRule": {
+            "post": {
+                "operationId": "cloudflareTunnel.deleteTunnelRule",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/cloudflareTunnel.startTunnel": {
+            "post": {
+                "operationId": "cloudflareTunnel.startTunnel",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {}
+                    }
+                }
+            }
+        },
+        "/api/trpc/cloudflareTunnel.stopTunnel": {
+            "post": {
+                "operationId": "cloudflareTunnel.stopTunnel",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Cloudflare Tunnel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {}
+                    }
+                }
+            }
+        }
+    }
+}

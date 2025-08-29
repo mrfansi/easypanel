@@ -1,0 +1,163 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Monitor",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Monitor",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/monitor.getSystemStats": {
+            "get": {
+                "operationId": "monitor.getSystemStats",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Monitor"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/monitor.getStorageStats": {
+            "get": {
+                "operationId": "monitor.getStorageStats",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Monitor"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/monitor.getAdvancedStats": {
+            "get": {
+                "operationId": "monitor.getAdvancedStats",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Monitor"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/monitor.getServiceStats": {
+            "get": {
+                "operationId": "monitor.getServiceStats",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Monitor"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "projectName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                },
+                                                "serviceName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "serviceName"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/monitor.getDockerTaskStats": {
+            "get": {
+                "operationId": "monitor.getDockerTaskStats",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Monitor"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/trpc/monitor.getMonitorTableData": {
+            "get": {
+                "operationId": "monitor.getMonitorTableData",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Monitor"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    }
+}

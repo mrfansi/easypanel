@@ -1,0 +1,206 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Storage Providers / S 3",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Storage Providers / S 3",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/storageProviders.s3.createProvider": {
+            "post": {
+                "operationId": "storageProviders.s3.createProvider",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Storage Providers / S 3"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "subtype": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "other",
+                                                    "aws",
+                                                    "backblaze",
+                                                    "digital-ocean",
+                                                    "wasabi"
+                                                ]
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "accessKeyId": {
+                                                "type": "string"
+                                            },
+                                            "secretAccessKey": {
+                                                "type": "string"
+                                            },
+                                            "bucket": {
+                                                "type": "string"
+                                            },
+                                            "region": {
+                                                "type": "string"
+                                            },
+                                            "endpoint": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "subtype",
+                                            "name",
+                                            "accessKeyId",
+                                            "secretAccessKey",
+                                            "bucket",
+                                            "region"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/storageProviders.s3.updateProvider": {
+            "post": {
+                "operationId": "storageProviders.s3.updateProvider",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Storage Providers / S 3"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "accessKeyId": {
+                                                "type": "string"
+                                            },
+                                            "secretAccessKey": {
+                                                "type": "string"
+                                            },
+                                            "bucket": {
+                                                "type": "string"
+                                            },
+                                            "region": {
+                                                "type": "string"
+                                            },
+                                            "endpoint": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "id",
+                                            "name",
+                                            "accessKeyId",
+                                            "secretAccessKey",
+                                            "bucket",
+                                            "region"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/storageProviders.s3.deleteProvider": {
+            "post": {
+                "operationId": "storageProviders.s3.deleteProvider",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Storage Providers / S 3"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

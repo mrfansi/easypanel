@@ -67,4 +67,39 @@ final class RequestValidator
             );
         }
     }
+
+    public static function validateRequiredField(?string $value, string $fieldName): void
+    {
+        if (empty($value)) {
+            throw new EasypanelValidationException("Required field '{$fieldName}' is missing or empty");
+        }
+    }
+
+    public static function validateDomainName(string $domain): void
+    {
+        if (!preg_match('/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $domain)) {
+            throw new EasypanelValidationException('Invalid domain name format');
+        }
+    }
+
+    public static function validatePort(int $port): void
+    {
+        if ($port < 1 || $port > 65535) {
+            throw new EasypanelValidationException('Port must be between 1 and 65535');
+        }
+    }
+
+    public static function validateMemoryLimit(string $memory): void
+    {
+        if (!preg_match('/^\d+(M|G|K)?$/', $memory)) {
+            throw new EasypanelValidationException('Memory limit must be in format like 512M, 1G, etc.');
+        }
+    }
+
+    public static function validateCpuLimit(string $cpu): void
+    {
+        if (!preg_match('/^\d*\.?\d+$/', $cpu)) {
+            throw new EasypanelValidationException('CPU limit must be a valid decimal number');
+        }
+    }
 }

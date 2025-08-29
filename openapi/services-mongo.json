@@ -1,0 +1,833 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Services / Mongo",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Services / Mongo",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/services.mongo.inspectService": {
+            "get": {
+                "operationId": "services.mongo.inspectService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "projectName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                },
+                                                "serviceName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "serviceName"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/services.mongo.createService": {
+            "post": {
+                "operationId": "services.mongo.createService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "user": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,62}$"
+                                            },
+                                            "image": {
+                                                "type": "string",
+                                                "default": "mongo:8"
+                                            },
+                                            "exposedPort": {
+                                                "type": "number"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "default": "7bc05333947783c93775"
+                                            },
+                                            "backup": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "schedule": {
+                                                        "type": "string",
+                                                        "minLength": 1
+                                                    },
+                                                    "destinationId": {
+                                                        "type": "string",
+                                                        "minLength": 1
+                                                    },
+                                                    "prefix": {
+                                                        "type": "string",
+                                                        "pattern": "^[\\w-/.]+$"
+                                                    },
+                                                    "databaseName": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "enabled",
+                                                    "schedule",
+                                                    "destinationId",
+                                                    "prefix"
+                                                ],
+                                                "additionalProperties": false
+                                            },
+                                            "resources": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "memoryReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "memoryLimit": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuLimit": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "memoryReservation",
+                                                    "memoryLimit",
+                                                    "cpuReservation",
+                                                    "cpuLimit"
+                                                ],
+                                                "additionalProperties": false
+                                            },
+                                            "env": {
+                                                "type": "string"
+                                            },
+                                            "command": {
+                                                "type": "string"
+                                            },
+                                            "mongoExpress": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "default": "97288b153a6b5fe0debc"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "dbGate": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "default": "adfd258493d7b9863c56"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.exposeService": {
+            "post": {
+                "operationId": "services.mongo.exposeService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "exposedPort": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 65535
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "exposedPort"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.updateResources": {
+            "post": {
+                "operationId": "services.mongo.updateResources",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "resources": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "memoryReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "memoryLimit": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuLimit": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "memoryReservation",
+                                                    "memoryLimit",
+                                                    "cpuReservation",
+                                                    "cpuLimit"
+                                                ],
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.enableService": {
+            "post": {
+                "operationId": "services.mongo.enableService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.disableService": {
+            "post": {
+                "operationId": "services.mongo.disableService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.destroyService": {
+            "post": {
+                "operationId": "services.mongo.destroyService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.enableMongoExpress": {
+            "post": {
+                "operationId": "services.mongo.enableMongoExpress",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.disableMongoExpress": {
+            "post": {
+                "operationId": "services.mongo.disableMongoExpress",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.enableDbGate": {
+            "post": {
+                "operationId": "services.mongo.enableDbGate",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.disableDbGate": {
+            "post": {
+                "operationId": "services.mongo.disableDbGate",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.updateAdvanced": {
+            "post": {
+                "operationId": "services.mongo.updateAdvanced",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "command": {
+                                                "type": "string"
+                                            },
+                                            "env": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "image",
+                                            "command"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.mongo.updateCredentials": {
+            "post": {
+                "operationId": "services.mongo.updateCredentials",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Mongo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "password"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

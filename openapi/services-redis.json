@@ -1,0 +1,799 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Services / Redis",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Services / Redis",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/services.redis.inspectService": {
+            "get": {
+                "operationId": "services.redis.inspectService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "projectName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                },
+                                                "serviceName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "serviceName"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/services.redis.createService": {
+            "post": {
+                "operationId": "services.redis.createService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "image": {
+                                                "type": "string",
+                                                "default": "redis:7"
+                                            },
+                                            "exposedPort": {
+                                                "type": "number"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "default": "3b58166edd9f01acbc6a"
+                                            },
+                                            "resources": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "memoryReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "memoryLimit": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuLimit": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "memoryReservation",
+                                                    "memoryLimit",
+                                                    "cpuReservation",
+                                                    "cpuLimit"
+                                                ],
+                                                "additionalProperties": false
+                                            },
+                                            "env": {
+                                                "type": "string"
+                                            },
+                                            "command": {
+                                                "type": "string"
+                                            },
+                                            "redisCommander": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "default": "542331e3a3278b0de826"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "dbGate": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "default": "06cac82498140ea5b953"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.exposeService": {
+            "post": {
+                "operationId": "services.redis.exposeService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "exposedPort": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 65535
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "exposedPort"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.updateResources": {
+            "post": {
+                "operationId": "services.redis.updateResources",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "resources": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "memoryReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "memoryLimit": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuLimit": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "memoryReservation",
+                                                    "memoryLimit",
+                                                    "cpuReservation",
+                                                    "cpuLimit"
+                                                ],
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.enableService": {
+            "post": {
+                "operationId": "services.redis.enableService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.disableService": {
+            "post": {
+                "operationId": "services.redis.disableService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.destroyService": {
+            "post": {
+                "operationId": "services.redis.destroyService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.enableRedisCommander": {
+            "post": {
+                "operationId": "services.redis.enableRedisCommander",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.disableRedisCommander": {
+            "post": {
+                "operationId": "services.redis.disableRedisCommander",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.enableDbGate": {
+            "post": {
+                "operationId": "services.redis.enableDbGate",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.disableDbGate": {
+            "post": {
+                "operationId": "services.redis.disableDbGate",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.updateAdvanced": {
+            "post": {
+                "operationId": "services.redis.updateAdvanced",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "command": {
+                                                "type": "string"
+                                            },
+                                            "env": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "image",
+                                            "command"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.redis.updateCredentials": {
+            "post": {
+                "operationId": "services.redis.updateCredentials",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Redis"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "password"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

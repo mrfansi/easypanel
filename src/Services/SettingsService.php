@@ -63,4 +63,51 @@ final class SettingsService extends AbstractService
             'domain' => $domain,
         ]);
     }
+
+    public function getGoogleAnalyticsMeasurementId(): array
+    {
+        return $this->makeRequest('settings.getGoogleAnalyticsMeasurementId');
+    }
+
+    public function setGoogleAnalyticsMeasurementId(string $measurementId): array
+    {
+        return $this->makePostRequest('settings.setGoogleAnalyticsMeasurementId', [
+            'measurementId' => $measurementId,
+        ]);
+    }
+
+    public function restartEasypanel(): array
+    {
+        return $this->makePostRequest('settings.restartEasypanel');
+    }
+
+    public function cleanupDockerImages(): array
+    {
+        return $this->makePostRequest('settings.cleanupDockerImages');
+    }
+
+    public function cleanupDockerBuilder(): array
+    {
+        return $this->makePostRequest('settings.cleanupDockerBuilder');
+    }
+
+    public function systemPrune(): array
+    {
+        return $this->makePostRequest('settings.systemPrune');
+    }
+
+    public function changeCredentials(array $credentials): array
+    {
+        return $this->makePostRequest('settings.changeCredentials', $credentials);
+    }
+
+    public function refreshServerIp(): array
+    {
+        return $this->makePostRequest('settings.refreshServerIp');
+    }
+
+    public function checkForUpdates(): array
+    {
+        return $this->makeRequest('settings.checkForUpdates');
+    }
 }

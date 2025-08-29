@@ -1,0 +1,837 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Easypanel API - Services / Postgres",
+        "description": "This is an auto-generated documentation for the API.\n\nTo authenticate, you need to pass the `Authorization` header with the value `Bearer <token>`.\n\nYou can get your token by logging in with the `auth.login` endpoint.\n\nThis is a shard containing endpoints tagged with: Services / Postgres",
+        "version": "2.21.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/api/trpc/services.postgres.inspectService": {
+            "get": {
+                "operationId": "services.postgres.inspectService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "json": {
+                                            "type": "object",
+                                            "properties": {
+                                                "projectName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                },
+                                                "serviceName": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-z0-9-_]+$"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "serviceName"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "required": [
+                                        "json"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/trpc/services.postgres.createService": {
+            "post": {
+                "operationId": "services.postgres.createService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "databaseName": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,62}$"
+                                            },
+                                            "user": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,62}$"
+                                            },
+                                            "image": {
+                                                "type": "string",
+                                                "default": "postgres:17"
+                                            },
+                                            "exposedPort": {
+                                                "type": "number"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "default": "83aa287657ebde7d79cb"
+                                            },
+                                            "backup": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "schedule": {
+                                                        "type": "string",
+                                                        "minLength": 1
+                                                    },
+                                                    "destinationId": {
+                                                        "type": "string",
+                                                        "minLength": 1
+                                                    },
+                                                    "prefix": {
+                                                        "type": "string",
+                                                        "pattern": "^[\\w-/.]+$"
+                                                    },
+                                                    "databaseName": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "enabled",
+                                                    "schedule",
+                                                    "destinationId",
+                                                    "prefix"
+                                                ],
+                                                "additionalProperties": false
+                                            },
+                                            "resources": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "memoryReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "memoryLimit": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuLimit": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "memoryReservation",
+                                                    "memoryLimit",
+                                                    "cpuReservation",
+                                                    "cpuLimit"
+                                                ],
+                                                "additionalProperties": false
+                                            },
+                                            "env": {
+                                                "type": "string"
+                                            },
+                                            "command": {
+                                                "type": "string"
+                                            },
+                                            "pgWeb": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "default": "50b74299a72861d4dff3"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "dbGate": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": false
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "default": "97d35f6e1c1f8a93a3da"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.exposeService": {
+            "post": {
+                "operationId": "services.postgres.exposeService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "exposedPort": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "maximum": 65535
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "exposedPort"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.updateResources": {
+            "post": {
+                "operationId": "services.postgres.updateResources",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "resources": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "memoryReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "memoryLimit": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuReservation": {
+                                                        "type": "number"
+                                                    },
+                                                    "cpuLimit": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "memoryReservation",
+                                                    "memoryLimit",
+                                                    "cpuReservation",
+                                                    "cpuLimit"
+                                                ],
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.enableService": {
+            "post": {
+                "operationId": "services.postgres.enableService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.disableService": {
+            "post": {
+                "operationId": "services.postgres.disableService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.destroyService": {
+            "post": {
+                "operationId": "services.postgres.destroyService",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.enablePgWeb": {
+            "post": {
+                "operationId": "services.postgres.enablePgWeb",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.disablePgWeb": {
+            "post": {
+                "operationId": "services.postgres.disablePgWeb",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.enableDbGate": {
+            "post": {
+                "operationId": "services.postgres.enableDbGate",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.disableDbGate": {
+            "post": {
+                "operationId": "services.postgres.disableDbGate",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.updateAdvanced": {
+            "post": {
+                "operationId": "services.postgres.updateAdvanced",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "command": {
+                                                "type": "string"
+                                            },
+                                            "env": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "image",
+                                            "command"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trpc/services.postgres.updateCredentials": {
+            "post": {
+                "operationId": "services.postgres.updateCredentials",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "Services / Postgres"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "json": {
+                                        "type": "object",
+                                        "properties": {
+                                            "projectName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "serviceName": {
+                                                "type": "string",
+                                                "pattern": "^[a-z0-9-_]+$"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "projectName",
+                                            "serviceName",
+                                            "password"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "json"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

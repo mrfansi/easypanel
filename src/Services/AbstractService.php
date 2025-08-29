@@ -31,8 +31,8 @@ abstract class AbstractService implements ServiceInterface
         return $this->httpClient->patch("/api/trpc/{$endpoint}", $data);
     }
 
-    protected function makeDeleteRequest(string $endpoint): array
+    protected function makeDeleteRequest(string $endpoint, array $parameters = []): array
     {
-        return $this->httpClient->delete("/api/trpc/{$endpoint}");
+        return $this->httpClient->delete("/api/trpc/{$endpoint}", $parameters);
     }
 }

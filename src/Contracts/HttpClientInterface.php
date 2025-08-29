@@ -14,7 +14,7 @@ interface HttpClientInterface
 
     public function patch(string $endpoint, array $data = []): array;
 
-    public function delete(string $endpoint): array;
+    public function delete(string $endpoint, array $parameters = []): array;
 
     public function setBaseUrl(string $baseUrl): self;
 

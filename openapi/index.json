@@ -1,0 +1,286 @@
+{
+    "generated": "2025-08-29T14:35:00.750Z",
+    "source": {
+        "file": "openapi.json",
+        "title": "Easypanel API",
+        "version": "2.21.0",
+        "totalPaths": 353
+    },
+    "shards": [
+        {
+            "tag": "Projects",
+            "filename": "projects.json",
+            "pathCount": 8,
+            "operationCount": 8
+        },
+        {
+            "tag": "Services / Common",
+            "filename": "services-common.json",
+            "pathCount": 4,
+            "operationCount": 4
+        },
+        {
+            "tag": "Services / App",
+            "filename": "services-app.json",
+            "pathCount": 23,
+            "operationCount": 23
+        },
+        {
+            "tag": "Services / Box",
+            "filename": "services-box.json",
+            "pathCount": 30,
+            "operationCount": 30
+        },
+        {
+            "tag": "Services / Wordpress",
+            "filename": "services-wordpress.json",
+            "pathCount": 52,
+            "operationCount": 52
+        },
+        {
+            "tag": "Services / Mariadb",
+            "filename": "services-mariadb.json",
+            "pathCount": 13,
+            "operationCount": 13
+        },
+        {
+            "tag": "Services / Mongo",
+            "filename": "services-mongo.json",
+            "pathCount": 13,
+            "operationCount": 13
+        },
+        {
+            "tag": "Services / Mysql",
+            "filename": "services-mysql.json",
+            "pathCount": 13,
+            "operationCount": 13
+        },
+        {
+            "tag": "Services / Postgres",
+            "filename": "services-postgres.json",
+            "pathCount": 13,
+            "operationCount": 13
+        },
+        {
+            "tag": "Services / Redis",
+            "filename": "services-redis.json",
+            "pathCount": 13,
+            "operationCount": 13
+        },
+        {
+            "tag": "Services / Compose",
+            "filename": "services-compose.json",
+            "pathCount": 16,
+            "operationCount": 16
+        },
+        {
+            "tag": "Auth",
+            "filename": "auth.json",
+            "pathCount": 4,
+            "operationCount": 4
+        },
+        {
+            "tag": "Portal License",
+            "filename": "portal-license.json",
+            "pathCount": 3,
+            "operationCount": 3
+        },
+        {
+            "tag": "Lemon License",
+            "filename": "lemon-license.json",
+            "pathCount": 4,
+            "operationCount": 4
+        },
+        {
+            "tag": "Update",
+            "filename": "update.json",
+            "pathCount": 2,
+            "operationCount": 2
+        },
+        {
+            "tag": "Setup",
+            "filename": "setup.json",
+            "pathCount": 2,
+            "operationCount": 2
+        },
+        {
+            "tag": "Monitor",
+            "filename": "monitor.json",
+            "pathCount": 6,
+            "operationCount": 6
+        },
+        {
+            "tag": "Settings",
+            "filename": "settings.json",
+            "pathCount": 19,
+            "operationCount": 19
+        },
+        {
+            "tag": "Users",
+            "filename": "users.json",
+            "pathCount": 6,
+            "operationCount": 6
+        },
+        {
+            "tag": "Git",
+            "filename": "git.json",
+            "pathCount": 2,
+            "operationCount": 2
+        },
+        {
+            "tag": "Cluster",
+            "filename": "cluster.json",
+            "pathCount": 3,
+            "operationCount": 3
+        },
+        {
+            "tag": "Branding",
+            "filename": "branding.json",
+            "pathCount": 12,
+            "operationCount": 12
+        },
+        {
+            "tag": "Notifications",
+            "filename": "notifications.json",
+            "pathCount": 5,
+            "operationCount": 5
+        },
+        {
+            "tag": "Certificates",
+            "filename": "certificates.json",
+            "pathCount": 2,
+            "operationCount": 2
+        },
+        {
+            "tag": "Actions",
+            "filename": "actions.json",
+            "pathCount": 3,
+            "operationCount": 3
+        },
+        {
+            "tag": "Traefik",
+            "filename": "traefik.json",
+            "pathCount": 6,
+            "operationCount": 6
+        },
+        {
+            "tag": "Cloudflare Tunnel",
+            "filename": "cloudflare-tunnel.json",
+            "pathCount": 11,
+            "operationCount": 11
+        },
+        {
+            "tag": "Domains",
+            "filename": "domains.json",
+            "pathCount": 6,
+            "operationCount": 6
+        },
+        {
+            "tag": "Storage Providers / Common",
+            "filename": "storage-providers-common.json",
+            "pathCount": 2,
+            "operationCount": 2
+        },
+        {
+            "tag": "Docker Builders",
+            "filename": "docker-builders.json",
+            "pathCount": 5,
+            "operationCount": 5
+        },
+        {
+            "tag": "Middlewares",
+            "filename": "middlewares.json",
+            "pathCount": 4,
+            "operationCount": 4
+        },
+        {
+            "tag": "Volume Backups",
+            "filename": "volume-backups.json",
+            "pathCount": 6,
+            "operationCount": 6
+        },
+        {
+            "tag": "Mounts",
+            "filename": "mounts.json",
+            "pathCount": 4,
+            "operationCount": 4
+        },
+        {
+            "tag": "Ports",
+            "filename": "ports.json",
+            "pathCount": 5,
+            "operationCount": 5
+        },
+        {
+            "tag": "Database Backups",
+            "filename": "database-backups.json",
+            "pathCount": 7,
+            "operationCount": 7
+        },
+        {
+            "tag": "Templates",
+            "filename": "templates.json",
+            "pathCount": 1,
+            "operationCount": 1
+        },
+        {
+            "tag": "Two Factor",
+            "filename": "two-factor.json",
+            "pathCount": 3,
+            "operationCount": 3
+        },
+        {
+            "tag": "Server",
+            "filename": "server.json",
+            "pathCount": 1,
+            "operationCount": 1
+        },
+        {
+            "tag": "Storage Providers / Dropbox",
+            "filename": "storage-providers-dropbox.json",
+            "pathCount": 4,
+            "operationCount": 4
+        },
+        {
+            "tag": "Storage Providers / Google",
+            "filename": "storage-providers-google.json",
+            "pathCount": 4,
+            "operationCount": 4
+        },
+        {
+            "tag": "Storage Providers / S 3",
+            "filename": "storage-providers-s-3.json",
+            "pathCount": 3,
+            "operationCount": 3
+        },
+        {
+            "tag": "Storage Providers / Sftp",
+            "filename": "storage-providers-sftp.json",
+            "pathCount": 3,
+            "operationCount": 3
+        },
+        {
+            "tag": "Storage Providers / Local",
+            "filename": "storage-providers-local.json",
+            "pathCount": 3,
+            "operationCount": 3
+        },
+        {
+            "tag": "Storage Providers / Ftp",
+            "filename": "storage-providers-ftp.json",
+            "pathCount": 3,
+            "operationCount": 3
+        },
+        {
+            "tag": "Subscription",
+            "filename": "subscription.json",
+            "pathCount": 1,
+            "operationCount": 1
+        }
+    ],
+    "summary": {
+        "totalShards": 45,
+        "totalPaths": 353,
+        "totalOperations": 353
+    }
+}

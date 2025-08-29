@@ -54,4 +54,40 @@ final class ProjectService extends AbstractService
     {
         return $this->makeDeleteRequest("projects.deleteProject?projectName={$projectName}");
     }
+
+    /**
+     * @throws EasypanelValidationException
+     */
+    public function destroyProject(string $projectName): array
+    {
+        RequestValidator::validateProjectName($projectName);
+
+        return $this->makeDeleteRequest('projects.destroyProject', [
+            'projectName' => $projectName,
+        ]);
+    }
+
+    /**
+     * @throws EasypanelValidationException
+     */
+    public function updateProjectEnv(string $projectName, array $envData): array
+    {
+        RequestValidator::validateProjectName($projectName);
+
+        return $this->makePatchRequest('projects.updateProjectEnv', array_merge([
+            'projectName' => $projectName,
+        ], $envData));
+    }
+
+    /**
+     * @throws EasypanelValidationException
+     */
+    public function updateAccess(string $projectName, array $accessData): array
+    {
+        RequestValidator::validateProjectName($projectName);
+
+        return $this->makePatchRequest('projects.updateAccess', array_merge([
+            'projectName' => $projectName,
+        ], $accessData));
+    }
 }
