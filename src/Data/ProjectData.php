@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Mrfansi\Easypanel\Data;
 
-final class ProjectData
+final readonly class ProjectData
 {
     public function __construct(
-        public readonly string $name,
-        public readonly ?string $description = null,
-        public readonly ?array $environment = null,
-        public readonly ?array $domains = null,
-        public readonly ?array $services = null,
+        public string  $name,
+        public ?string $description = null,
+        public ?array  $environment = null,
+        public ?array  $domains = null,
+        public ?array  $services = null,
     ) {}
 
     public static function fromArray(array $data): self
