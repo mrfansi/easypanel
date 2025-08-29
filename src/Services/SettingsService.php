@@ -26,6 +26,16 @@ final class SettingsService extends AbstractService
         return $this->makeRequest('settings.getPanelDomain');
     }
 
+    public function getServerIp(): array
+    {
+        return $this->makeRequest('settings.getServerIp');
+    }
+
+    public function getDemoMode(): array
+    {
+        return $this->makeRequest('settings.getDemoMode');
+    }
+
     public function setGithubToken(string $token): array
     {
         return $this->makePostRequest('settings.setGithubToken', [

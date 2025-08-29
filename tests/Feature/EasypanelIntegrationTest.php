@@ -77,3 +77,35 @@ it('can configure client settings', function () {
 
     expect($easypanel)->toBeInstanceOf(Easypanel::class);
 });
+
+it('can fetch server ip from settings', function () {
+    $settingsData = ['ip' => '203.0.113.10'];
+
+    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
+    $this->response->shouldReceive('status')->andReturn(200);
+    $this->response->shouldReceive('json')->andReturn($settingsData);
+
+    $result = $this->easypanel->settings()->getServerIp();
+
+    expect($result)->toBe($settingsData);
+});
+
+it('can fetch demo mode from settings', function () {
+    $settingsData = ['enabled' => true];
+
+    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
+    $this->response->shouldReceive('status')->andReturn(200);
+    $this->response->shouldReceive('json')->andReturn($settingsData);
+
+    $result = $this->easypanel->settings()->getDemoMode();
+
+    expect($result)->toBe($settingsData);
+});
