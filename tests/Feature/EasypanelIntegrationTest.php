@@ -24,7 +24,11 @@ afterEach(function () {
 it('can authenticate and get user info', function () {
     $expectedData = ['user' => ['id' => 1, 'email' => 'admin@example.com']];
 
-    setupHttpFactoryMock();
+    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
     $this->response->shouldReceive('status')->andReturn(200);
     $this->response->shouldReceive('json')->andReturn($expectedData);
 
@@ -36,7 +40,11 @@ it('can authenticate and get user info', function () {
 it('can manage projects', function () {
     $projectsData = ['projects' => [['name' => 'test-project']]];
 
-    setupHttpFactoryMock();
+    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
     $this->response->shouldReceive('status')->andReturn(200);
     $this->response->shouldReceive('json')->andReturn($projectsData);
 
@@ -48,7 +56,11 @@ it('can manage projects', function () {
 it('can monitor services', function () {
     $statsData = ['cpu' => 45.2, 'memory' => 1024];
 
-    setupHttpFactoryMock();
+    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
     $this->response->shouldReceive('status')->andReturn(200);
     $this->response->shouldReceive('json')->andReturn($statsData);
 
@@ -65,13 +77,3 @@ it('can configure client settings', function () {
 
     expect($easypanel)->toBeInstanceOf(Easypanel::class);
 });
-
-function setupHttpFactoryMock()
-{
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->pendingRequest->shouldReceive('post')->andReturn($this->response);
-}

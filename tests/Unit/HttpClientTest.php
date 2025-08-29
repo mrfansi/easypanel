@@ -38,7 +38,11 @@ it('can set timeout', function () {
 it('can make GET request', function () {
     $expectedData = ['result' => 'success'];
 
-    setupHttpClientMock();
+    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
     $this->response->shouldReceive('status')->andReturn(200);
     $this->response->shouldReceive('json')->andReturn($expectedData);
 
@@ -48,7 +52,11 @@ it('can make GET request', function () {
 });
 
 it('throws authentication exception on 401', function () {
-    setupHttpClientMock();
+    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
+    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
     $this->response->shouldReceive('status')->andReturn(401);
     $this->response->shouldReceive('json')->andReturn(['message' => 'Unauthorized']);
 
@@ -56,22 +64,13 @@ it('throws authentication exception on 401', function () {
 })->throws(EasypanelAuthenticationException::class);
 
 it('throws api exception on other errors', function () {
-    setupHttpClientMock();
-    $this->response->shouldReceive('status')->andReturn(500);
-    $this->response->shouldReceive('json')->andReturn(['message' => 'Internal Server Error']);
-
-    $this->httpClient->get('/test-endpoint');
-})->throws(EasypanelApiException::class);
-
-function setupHttpClientMock()
-{
     $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
     $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
     $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
     $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
     $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->pendingRequest->shouldReceive('post')->andReturn($this->response);
-    $this->pendingRequest->shouldReceive('put')->andReturn($this->response);
-    $this->pendingRequest->shouldReceive('patch')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('delete')->andReturn($this->response);
-}
+    $this->response->shouldReceive('status')->andReturn(500);
+    $this->response->shouldReceive('json')->andReturn(['message' => 'Internal Server Error']);
+
+    $this->httpClient->get('/test-endpoint');
+})->throws(EasypanelApiException::class);

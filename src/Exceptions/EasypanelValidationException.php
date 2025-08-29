@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Mrfansi\Easypanel\Exceptions;
 
-final class EasypanelValidationException extends EasypanelException
+class EasypanelValidationException extends EasypanelException
 {
     private array $errors;
 

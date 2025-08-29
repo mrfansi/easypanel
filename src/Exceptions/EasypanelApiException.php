@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Mrfansi\Easypanel\Exceptions;
 
-final class EasypanelApiException extends EasypanelException
+class EasypanelApiException extends EasypanelException
 {
     public function __construct(string $message, int $statusCode = 0)
     {

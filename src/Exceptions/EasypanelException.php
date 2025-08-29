@@ -6,7 +6,7 @@ namespace Mrfansi\Easypanel\Exceptions;
 
 use Exception;
 
-final class EasypanelException extends Exception
+class EasypanelException extends Exception
 {
     //
 }
