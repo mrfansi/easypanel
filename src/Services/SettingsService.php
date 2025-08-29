@@ -1,0 +1,56 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Mrfansi\Easypanel\Services;
+
+final class SettingsService extends AbstractService
+{
+    public function getGithubToken(): array
+    {
+        return $this->makeRequest('settings.getGithubToken');
+    }
+
+    public function getDailyDockerCleanup(): array
+    {
+        return $this->makeRequest('settings.getDailyDockerCleanup');
+    }
+
+    public function getLetsEncryptEmail(): array
+    {
+        return $this->makeRequest('settings.getLetsEncryptEmail');
+    }
+
+    public function getPanelDomain(): array
+    {
+        return $this->makeRequest('settings.getPanelDomain');
+    }
+
+    public function setGithubToken(string $token): array
+    {
+        return $this->makePostRequest('settings.setGithubToken', [
+            'token' => $token,
+        ]);
+    }
+
+    public function setDailyDockerCleanup(bool $enabled): array
+    {
+        return $this->makePostRequest('settings.setDailyDockerCleanup', [
+            'enabled' => $enabled,
+        ]);
+    }
+
+    public function setLetsEncryptEmail(string $email): array
+    {
+        return $this->makePostRequest('settings.setLetsEncryptEmail', [
+            'email' => $email,
+        ]);
+    }
+
+    public function setPanelDomain(string $domain): array
+    {
+        return $this->makePostRequest('settings.setPanelDomain', [
+            'domain' => $domain,
+        ]);
+    }
+}
