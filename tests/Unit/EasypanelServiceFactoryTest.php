@@ -47,17 +47,17 @@ it('can access all documented services without errors', function () {
     expect($this->easypanel->auth())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
     expect($this->easypanel->projects())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
     expect($this->easypanel->monitor())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
-    
-    // Database Services  
+
+    // Database Services
     expect($this->easypanel->servicesMySql())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
     expect($this->easypanel->servicesPostgres())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
     expect($this->easypanel->servicesRedis())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
-    
+
     // Infrastructure Services
     expect($this->easypanel->cluster())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
     expect($this->easypanel->traefik())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
     expect($this->easypanel->dockerBuilders())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
-    
+
     // Storage Services
     expect($this->easypanel->storageProvidersS3())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
     expect($this->easypanel->storageProvidersDropbox())->toBeInstanceOf(\Mrfansi\Easypanel\Contracts\ServiceInterface::class);
