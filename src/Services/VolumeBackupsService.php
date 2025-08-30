@@ -131,7 +131,7 @@ final class VolumeBackupsService extends AbstractService
         RequestValidator::validateRequiredField($data['storageProviderId'], 'storageProviderId');
 
         // Validate storage provider path format
-        if (! preg_match('/^[\w-\/.]+$/', $data['storageProviderPath'])) {
+        if (! preg_match('/^[\w\-\/.]+$/', $data['storageProviderPath'])) {
             throw new EasypanelValidationException('Storage provider path contains invalid characters');
         }
 

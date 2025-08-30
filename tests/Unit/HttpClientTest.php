@@ -2,22 +2,13 @@
 
 declare(strict_types=1);
 
-use Illuminate\Http\Client\Factory as HttpFactory;
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
 use Mrfansi\Easypanel\Exceptions\EasypanelApiException;
 use Mrfansi\Easypanel\Exceptions\EasypanelAuthenticationException;
 use Mrfansi\Easypanel\Http\HttpClient;
 
 beforeEach(function () {
-    $this->httpFactory = Mockery::mock(HttpFactory::class);
-    $this->pendingRequest = Mockery::mock(PendingRequest::class);
-    $this->response = Mockery::mock(Response::class);
-    $this->httpClient = new HttpClient($this->httpFactory);
-});
-
-afterEach(function () {
-    Mockery::close();
+    $this->httpClient = new HttpClient('https://example.com', 'test-token', 30);
 });
 
 it('can set base url', function () {
@@ -38,39 +29,34 @@ it('can set timeout', function () {
 it('can make GET request', function () {
     $expectedData = ['result' => 'success'];
 
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->response->shouldReceive('status')->andReturn(200);
-    $this->response->shouldReceive('json')->andReturn($expectedData);
+    Http::fake([
+        'example.com/*' => Http::response($expectedData, 200)
+    ]);
 
     $result = $this->httpClient->get('/test-endpoint', ['param' => 'value']);
 
     expect($result)->toBe($expectedData);
+    
+    Http::assertSent(function ($request) {
+        return str_contains($request->url(), 'https://example.com/test-endpoint') &&
+               $request->method() === 'GET' &&
+               in_array('Bearer test-token', $request->header('Authorization')) &&
+               in_array('application/json', $request->header('Accept'));
+    });
 });
 
 it('throws authentication exception on 401', function () {
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->response->shouldReceive('status')->andReturn(401);
-    $this->response->shouldReceive('json')->andReturn(['message' => 'Unauthorized']);
+    Http::fake([
+        'example.com/*' => Http::response(['message' => 'Unauthorized'], 401)
+    ]);
 
     $this->httpClient->get('/test-endpoint');
 })->throws(EasypanelAuthenticationException::class);
 
 it('throws api exception on other errors', function () {
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->response->shouldReceive('status')->andReturn(500);
-    $this->response->shouldReceive('json')->andReturn(['message' => 'Internal Server Error']);
+    Http::fake([
+        'example.com/*' => Http::response(['message' => 'Internal Server Error'], 500)
+    ]);
 
     $this->httpClient->get('/test-endpoint');
 })->throws(EasypanelApiException::class);

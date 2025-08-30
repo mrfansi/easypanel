@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Mrfansi\Easypanel;
 
-use Illuminate\Http\Client\Factory as HttpFactory;
 use Mrfansi\Easypanel\Commands\EasypanelCommand;
 use Mrfansi\Easypanel\Contracts\HttpClientInterface;
 use Mrfansi\Easypanel\Http\HttpClient;
@@ -26,24 +25,13 @@ final class EasypanelServiceProvider extends PackageServiceProvider
     public function packageRegistered(): void
     {
         $this->app->bind(HttpClientInterface::class, function () {
-            $httpFactory = $this->app->make(HttpFactory::class);
-            $httpClient = new HttpClient($httpFactory);
-
             $config = config('easypanel');
 
-            if ($config['base_url']) {
-                $httpClient->setBaseUrl($config['base_url']);
-            }
-
-            if ($config['auth_token']) {
-                $httpClient->setAuthToken($config['auth_token']);
-            }
-
-            if ($config['timeout']) {
-                $httpClient->setTimeout($config['timeout']);
-            }
-
-            return $httpClient;
+            return new HttpClient(
+                $config['base_url'] ?? '',
+                $config['auth_token'] ?? '',
+                $config['timeout'] ?? 30
+            );
         });
 
         $this->app->bind(Easypanel::class, function () {

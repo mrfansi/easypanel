@@ -2,35 +2,21 @@
 
 declare(strict_types=1);
 
-use Illuminate\Http\Client\Factory as HttpFactory;
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
 use Mrfansi\Easypanel\Easypanel;
 use Mrfansi\Easypanel\Http\HttpClient;
 
 beforeEach(function () {
-    $this->httpFactory = Mockery::mock(HttpFactory::class);
-    $this->pendingRequest = Mockery::mock(PendingRequest::class);
-    $this->response = Mockery::mock(Response::class);
-
-    $httpClient = new HttpClient($this->httpFactory);
+    $httpClient = new HttpClient('https://example.com', 'test-token', 30);
     $this->easypanel = new Easypanel($httpClient);
-});
-
-afterEach(function () {
-    Mockery::close();
 });
 
 it('can authenticate and get user info', function () {
     $expectedData = ['user' => ['id' => 1, 'email' => 'admin@example.com']];
 
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->response->shouldReceive('status')->andReturn(200);
-    $this->response->shouldReceive('json')->andReturn($expectedData);
+    Http::fake([
+        'example.com/*' => Http::response($expectedData, 200)
+    ]);
 
     $result = $this->easypanel->auth()->getUser();
 
@@ -40,13 +26,9 @@ it('can authenticate and get user info', function () {
 it('can manage projects', function () {
     $projectsData = ['projects' => [['name' => 'test-project']]];
 
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->response->shouldReceive('status')->andReturn(200);
-    $this->response->shouldReceive('json')->andReturn($projectsData);
+    Http::fake([
+        'example.com/*' => Http::response($projectsData, 200)
+    ]);
 
     $result = $this->easypanel->projects()->listProjects();
 
@@ -56,13 +38,9 @@ it('can manage projects', function () {
 it('can monitor services', function () {
     $statsData = ['cpu' => 45.2, 'memory' => 1024];
 
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->response->shouldReceive('status')->andReturn(200);
-    $this->response->shouldReceive('json')->andReturn($statsData);
+    Http::fake([
+        'example.com/*' => Http::response($statsData, 200)
+    ]);
 
     $result = $this->easypanel->monitor()->getSystemStats();
 
@@ -81,13 +59,9 @@ it('can configure client settings', function () {
 it('can fetch server ip from settings', function () {
     $settingsData = ['ip' => '203.0.113.10'];
 
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->response->shouldReceive('status')->andReturn(200);
-    $this->response->shouldReceive('json')->andReturn($settingsData);
+    Http::fake([
+        'example.com/*' => Http::response($settingsData, 200)
+    ]);
 
     $result = $this->easypanel->settings()->getServerIp();
 
@@ -97,13 +71,9 @@ it('can fetch server ip from settings', function () {
 it('can fetch demo mode from settings', function () {
     $settingsData = ['enabled' => true];
 
-    $this->httpFactory->shouldReceive('baseUrl')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('timeout')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('accept')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('withToken')->andReturn($this->pendingRequest);
-    $this->pendingRequest->shouldReceive('get')->andReturn($this->response);
-    $this->response->shouldReceive('status')->andReturn(200);
-    $this->response->shouldReceive('json')->andReturn($settingsData);
+    Http::fake([
+        'example.com/*' => Http::response($settingsData, 200)
+    ]);
 
     $result = $this->easypanel->settings()->getDemoMode();
 

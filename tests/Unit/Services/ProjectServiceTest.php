@@ -87,7 +87,7 @@ it('can delete project', function () {
 
     $this->httpClient
         ->shouldReceive('delete')
-        ->with("/api/trpc/projects.deleteProject?projectName={$projectName}")
+        ->with("/api/trpc/projects.deleteProject?projectName={$projectName}", [])
         ->andReturn($expectedData);
 
     $result = $this->service->deleteProject($projectName);
