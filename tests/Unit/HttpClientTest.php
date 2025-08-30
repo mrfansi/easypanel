@@ -30,13 +30,13 @@ it('can make GET request', function () {
     $expectedData = ['result' => 'success'];
 
     Http::fake([
-        'example.com/*' => Http::response($expectedData, 200)
+        'example.com/*' => Http::response($expectedData, 200),
     ]);
 
     $result = $this->httpClient->get('/test-endpoint', ['param' => 'value']);
 
     expect($result)->toBe($expectedData);
-    
+
     Http::assertSent(function ($request) {
         return str_contains($request->url(), 'https://example.com/test-endpoint') &&
                $request->method() === 'GET' &&
@@ -47,7 +47,7 @@ it('can make GET request', function () {
 
 it('throws authentication exception on 401', function () {
     Http::fake([
-        'example.com/*' => Http::response(['message' => 'Unauthorized'], 401)
+        'example.com/*' => Http::response(['message' => 'Unauthorized'], 401),
     ]);
 
     $this->httpClient->get('/test-endpoint');
@@ -55,7 +55,7 @@ it('throws authentication exception on 401', function () {
 
 it('throws api exception on other errors', function () {
     Http::fake([
-        'example.com/*' => Http::response(['message' => 'Internal Server Error'], 500)
+        'example.com/*' => Http::response(['message' => 'Internal Server Error'], 500),
     ]);
 
     $this->httpClient->get('/test-endpoint');

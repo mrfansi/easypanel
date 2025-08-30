@@ -24,7 +24,7 @@ final class Easypanel
         'certificates' => 'CertificatesService',
         'domains' => 'DomainsService',
         'templates' => 'TemplatesService',
-        
+
         // Infrastructure Services
         'actions' => 'ActionsService',
         'branding' => 'BrandingService',
@@ -42,7 +42,7 @@ final class Easypanel
         'update' => 'UpdateService',
         'subscription' => 'SubscriptionService',
         'server' => 'ServerService',
-        
+
         // Database Services
         'servicesApp' => 'ServicesAppService',
         'servicesMySql' => 'ServicesMySqlService',
@@ -54,7 +54,7 @@ final class Easypanel
         'servicesBox' => 'ServicesBoxService',
         'servicesCompose' => 'ServicesComposeService',
         'servicesCommon' => 'ServicesCommonService',
-        
+
         // Storage Services
         'storageProvidersCommon' => 'StorageProvidersCommonService',
         'storageProvidersDropbox' => 'StorageProvidersDropboxService',
@@ -63,11 +63,11 @@ final class Easypanel
         'storageProvidersLocal' => 'StorageProvidersLocalService',
         'storageProvidersS3' => 'StorageProvidersS3Service',
         'storageProvidersSftp' => 'StorageProvidersSftpService',
-        
+
         // Backup Services
         'volumeBackups' => 'VolumeBackupsService',
         'databaseBackups' => 'DatabaseBackupsService',
-        
+
         // License Services
         'portalLicense' => 'PortalLicenseService',
         'lemonLicense' => 'LemonLicenseService',
@@ -80,14 +80,14 @@ final class Easypanel
 
     public function __call(string $method, array $arguments): ServiceInterface
     {
-        if (!isset($this->serviceMap[$method])) {
+        if (! isset($this->serviceMap[$method])) {
             throw new \BadMethodCallException("Service '{$method}' does not exist.");
         }
 
-        if (!isset($this->serviceInstances[$method])) {
-            $serviceClass = 'Mrfansi\\Easypanel\\Services\\' . $this->serviceMap[$method];
-            
-            if (!class_exists($serviceClass)) {
+        if (! isset($this->serviceInstances[$method])) {
+            $serviceClass = 'Mrfansi\\Easypanel\\Services\\'.$this->serviceMap[$method];
+
+            if (! class_exists($serviceClass)) {
                 throw new \RuntimeException("Service class '{$serviceClass}' does not exist.");
             }
 
@@ -96,7 +96,6 @@ final class Easypanel
 
         return $this->serviceInstances[$method];
     }
-
 
     public function setBaseUrl(string $baseUrl): self
     {
