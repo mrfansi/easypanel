@@ -159,5 +159,8 @@ final class HttpClient implements HttpClientInterface
                 $response->status()
             ),
         };
+
+        // This line will never be reached, but satisfies static analysis
+        return [];
     }
 }
